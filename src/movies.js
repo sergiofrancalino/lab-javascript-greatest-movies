@@ -18,19 +18,34 @@ function getUniqueDirectors(moviesArray) {
 
 // Iteration 2: Steven Spielberg. The best? - How many drama movies did STEVEN SPIELBERG direct?
 function howManyMovies(moviesArray) {
-    let filtraDrama = moviesArray.filter(pointer => pointer.genre.includes("Drama") && pointer.director === "Steven Spielberg").length;
-    return filtraDrama;
+    let filtersDrama = moviesArray.filter(pointer => pointer.genre.includes("Drama") && pointer.director === "Steven Spielberg").length;
+    return filtersDrama;
 }
 //console.log (`Spielberg fez ${howManyMovies(moviesArray)} de Drama!`);
 
 // Iteration 3: All scores average - Get the average of all scores with 2 decimals
-function scoresAverage(moviesArray) {}
+function scoresAverage(moviesArray) {
+    if (moviesArray.length === 0) {return 0};
+    const totalsAll = moviesArray.reduce((accum, pointer) => {return (pointer.score || 0) + accum },0);
+    return parseFloat((totalsAll / moviesArray.length).toFixed(2));
+}
 
 // Iteration 4: Drama movies - Get the average of Drama Movies
-function dramaMoviesScore(moviesArray) {}
+function dramaMoviesScore(moviesArray) {
+    return scoresAverage(moviesArray.filter(pointer => pointer.genre.includes("Drama"))); // Usando a função da Interation 3.
+}
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
-function orderByYear(moviesArray) {}
+function orderByYear(moviesArray) {
+    let newArrayYear = [...moviesArray].sort((m1, m2) => {
+        if (m1.year > m2.year) return 1; 
+        if (m1.year < m2.year) return -1;
+        if (m1.title > m2.title) return 1;
+        if (m1.title < m2.title) return -1;
+    }) 
+     console.log(newArrayYear.map(m => m.year + " : " + m.title))   
+      return newArrayYear;
+}
 
 // Iteration 6: Alphabetic Order - Order by title and print the first 20 titles
 function orderAlphabetically(moviesArray) {}
