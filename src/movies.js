@@ -69,4 +69,30 @@ function turnHoursToMinutes(moviesArray) {
 }
 
 // BONUS - Iteration 8: Best yearly score average - Best yearly score average
-function bestYearAvg(moviesArray) {}
+function bestYearAvg(moviesArray) {
+    if (!moviesArray.length) return null
+  const uniqueYears = [...new Set(moviesArray.map(m => m.year))]
+  const averageScoreByYear = []
+  for (let year of uniqueYears) {
+    const filtered = moviesArray.filter(movie => movie.year === year)
+    let avg = 0;
+    filtered.forEach(movie => {avg += movie.score;})
+    let average = Math.round((avg / filtered.length + Number.EPSILON) * 100) / 100
+    averageScoreByYear.push({year, average});
+  }
+  let bestYear = averageScoreByYear.filter(el => el.average === Math.max(...averageScoreByYear.map(element => element.average)))
+  if (bestYear.length > 1){
+    bestYear = bestYear.filter(el => el.year === Math.min(...bestYear.map(element => element.year)))
+  }
+  bestYear = bestYear[0]
+  return `O melhor ano foi ${bestYear.year} com a media de score ${bestYear.average}`;
+}
+
+// Publica as funções.  
+
+if (typeof module !== 'undefined') {
+    module.exports = {getAllDirectors, howManyMovies, scoresAverage, dramaMoviesScore, orderByYear, orderAlphabetically, turnHoursToMinutes, bestYearAvg,
+    };
+  };
+
+  // ok
