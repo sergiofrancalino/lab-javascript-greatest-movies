@@ -18,8 +18,8 @@ function getUniqueDirectors(moviesArray) {
 
 // Iteration 2: Steven Spielberg. The best? - How many drama movies did STEVEN SPIELBERG direct?
 function howManyMovies(moviesArray) {
-    let filtro = moviesArray.filter(pointer => pointer.genre.includes("Drama") && pointer.director === "Steven Spielberg").length;
-    return filtro;
+    let filtraDrama = moviesArray.filter(pointer => pointer.genre.includes("Drama") && pointer.director === "Steven Spielberg").length;
+    return filtraDrama;
 }
 //console.log (`Spielberg fez ${howManyMovies(moviesArray)} de Drama!`);
 
