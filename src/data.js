@@ -2001,3 +2001,9 @@ const movies = [
     score: 8
   }
 ];
+
+// Publica o objeto (array data.js) para importação dos dados.
+ 
+if (typeof module !== 'undefined') {
+  module.exports = movies;
+};
