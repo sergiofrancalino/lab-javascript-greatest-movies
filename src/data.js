@@ -2003,7 +2003,9 @@ const movies = [
 ];
 
 // Publica o objeto (array data.js) para importação dos dados.
- 
+
 if (typeof module !== 'undefined') {
   module.exports = movies;
 };
+
+// Exportação
